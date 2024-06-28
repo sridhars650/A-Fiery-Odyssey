@@ -23,12 +23,6 @@ public class MagnetCursor : MonoBehaviour
 
     void Update()
     {
-        Vector3 cursorPosition = Input.mousePosition;
-        Vector3 blockScreenPosition = Camera.main.WorldToScreenPoint(blockTransform.position);
-        Vector3 direction = (blockScreenPosition - cursorPosition).normalized;
-
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
         if (Input.GetMouseButtonDown(0))
         {
             isAttracting = true;
@@ -42,57 +36,68 @@ public class MagnetCursor : MonoBehaviour
 
         if (isAttracting)
         {
-            // Calculate distance to cursor
+            Vector3 cursorPosition = Input.mousePosition;
+            Vector3 blockScreenPosition = Camera.main.WorldToScreenPoint(blockTransform.position);
+            Vector3 moveDirection = (Camera.main.ScreenToWorldPoint(cursorPosition) - blockTransform.position).normalized;
             float distance = Vector3.Distance(blockTransform.position, Camera.main.ScreenToWorldPoint(cursorPosition));
 
-            // Move towards cursor
             if (distance > attractionRange)
             {
-                // Gradually increase speed towards max speed
                 currentAttractionSpeed = Mathf.Min(currentAttractionSpeed + attractionAcceleration * Time.deltaTime, maxAttractionSpeed);
-                Vector3 moveDirection = (Camera.main.ScreenToWorldPoint(cursorPosition) - blockTransform.position).normalized;
                 blockTransform.position += moveDirection * currentAttractionSpeed * Time.deltaTime;
             }
             else if (distance > stopDistance)
             {
-                // Move at max speed when close enough
-                Vector3 moveDirection = (Camera.main.ScreenToWorldPoint(cursorPosition) - blockTransform.position).normalized;
                 blockTransform.position += moveDirection * maxAttractionSpeed * Time.deltaTime;
             }
         }
 
         // Set cursor based on angle
-        if (angle > 67.5f && angle <= 112.5f)
+        Vector3 cursorDir = Camera.main.WorldToScreenPoint(blockTransform.position) - Input.mousePosition;
+        float angle = Mathf.Atan2(cursorDir.y, cursorDir.x) * Mathf.Rad2Deg;
+
+        Cursor.SetCursor(GetCursorTexture(angle), hotSpot, CursorMode.Auto);
+
+        // Debug logs for position
+        Debug.Log("Block Position: " + blockTransform.position);
+    }
+
+    Texture2D GetCursorTexture(float angle)
+    {
+        if (angle > -22.5f && angle <= 22.5f)
         {
-            Cursor.SetCursor(cursorUp, hotSpot, CursorMode.Auto);
-        }
-        else if (angle > 112.5f && angle <= 157.5f)
-        {
-            Cursor.SetCursor(cursorUpLeft, hotSpot, CursorMode.Auto);
-        }
-        else if (angle > 157.5f || angle <= -157.5f)
-        {
-            Cursor.SetCursor(cursorLeft, hotSpot, CursorMode.Auto);
-        }
-        else if (angle > -157.5f && angle <= -112.5f)
-        {
-            Cursor.SetCursor(cursorDownLeft, hotSpot, CursorMode.Auto);
-        }
-        else if (angle > -112.5f && angle <= -67.5f)
-        {
-            Cursor.SetCursor(cursorDown, hotSpot, CursorMode.Auto);
-        }
-        else if (angle > -67.5f && angle <= -22.5f)
-        {
-            Cursor.SetCursor(cursorDownRight, hotSpot, CursorMode.Auto);
-        }
-        else if (angle > -22.5f && angle <= 22.5f)
-        {
-            Cursor.SetCursor(cursorRight, hotSpot, CursorMode.Auto);
+            return cursorRight;
         }
         else if (angle > 22.5f && angle <= 67.5f)
         {
-            Cursor.SetCursor(cursorUpRight, hotSpot, CursorMode.Auto);
+            return cursorUpRight;
         }
+        else if (angle > 67.5f && angle <= 112.5f)
+        {
+            return cursorUp;
+        }
+        else if (angle > 112.5f && angle <= 157.5f)
+        {
+            return cursorUpLeft;
+        }
+        else if (angle > 157.5f || angle <= -157.5f)
+        {
+            return cursorLeft;
+        }
+        else if (angle > -157.5f && angle <= -112.5f)
+        {
+            return cursorDownLeft;
+        }
+        else if (angle > -112.5f && angle <= -67.5f)
+        {
+            return cursorDown;
+        }
+        else if (angle > -67.5f && angle <= -22.5f)
+        {
+            return cursorDownRight;
+        }
+
+        // Default cursor
+        return cursorUp;
     }
 }
