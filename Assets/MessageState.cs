@@ -8,7 +8,8 @@ public class MessageState : MonoBehaviour
     public GameObject messageObject;
     private PolygonCollider2D polygonCollider;
     private float disableTimer = 0;
-    private bool isDisabled = false;    
+    private bool isDisabled = false;
+    private bool inMessageState = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,13 @@ public class MessageState : MonoBehaviour
                 isDisabled = false;
             }
         }
+        if (inMessageState)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                dismissPopUp();
+            }
+        }
     }
     private void DisableCollisionForTwoSeconds()
     {
@@ -41,6 +49,7 @@ public class MessageState : MonoBehaviour
     {
         if (collision.gameObject.layer == 3)
         {
+            inMessageState = true;
             freezeGame(); // freezes game
             popUpMessage();
         }
