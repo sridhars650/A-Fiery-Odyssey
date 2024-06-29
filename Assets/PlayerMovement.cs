@@ -9,13 +9,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 	public CharacterController2D controller;
-	public Rigidbody2D myRigidbody;
-	public SpriteRenderer spriteRenderer;
-	public Sprite characterBackwards;
-	public Sprite characterForwards;
 	public float horizontalMove = 0;
 	public float runSpeed = 40;
 	public bool jump = false;
+	public bool crouch = false;
 	public float verticalMove = 0;
 
 	// Start is called before the first frame update
@@ -33,13 +30,23 @@ public class PlayerMovement : MonoBehaviour
         {
 			jump = true;
         }
+
+		if (verticalMove == -1)
+        {
+			Debug.Log("crouching");
+			crouch = true;
+        } else if (verticalMove == 0 || verticalMove == 1)
+        {
+			crouch = false;
+        }
+
         
 	}
 
     void FixedUpdate()
     {
 		// Move the character
-		controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
 		jump = false;
     }
 
