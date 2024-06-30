@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LockScript : MonoBehaviour
 {
@@ -9,19 +10,40 @@ public class LockScript : MonoBehaviour
     private PolygonCollider2D polygonCollider;
     private float disableTimer = 0;
     private bool isDisabled = false;
-    public bool inMessageState = false;
+    private bool inMessageState = false;
     public int costToBuyArea = 5;
     public GameObject lockedArea;
-    public SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
     public Sprite unlockedSprite;
     private bool unlocked = false;
-    private GameObject costMessage;
+    private TMP_Text[] arrayOfTexts;
+    private TMP_Text costMsg;
+    private GameObject noFunds;
 
     // Start is called before the first frame update
     void Start()
     {
         polygonCollider = GetComponent<PolygonCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        arrayOfTexts = messageObject.GetComponentsInChildren<TMP_Text>();
+        foreach (Transform child in messageObject.transform)
+        {
+            if (child.gameObject.name == "noFunds")
+            {
+                noFunds = child.gameObject;
+                break;
+            }
+        }
+
+        foreach (TMP_Text tmpText in arrayOfTexts)
+        {
+            if (tmpText.name == "costMsg")
+            {
+                costMsg = tmpText;
+            }
+        }
+        costMsg.SetText(costToBuyArea + " coins");
+        
     }
 
     // Update is called once per frame
@@ -98,7 +120,7 @@ public class LockScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("Insufficient Funds");
+            noFunds.SetActive(true);
         }
     }
 
