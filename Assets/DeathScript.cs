@@ -3,24 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class FinishedScript : MonoBehaviour
+public class DeathScript : MonoBehaviour
 {
-    public bool gameIsFrozen = false;
-    public bool inMessageState = false;
+    private PolygonCollider2D polygonCollider;
     public GameObject messageObject;
-    private BoxCollider2D boxCollider;
+    public bool inMessageState = false;
+    public bool gameIsFrozen = false;
     // Start is called before the first frame update
     void Start()
     {
-        boxCollider = GetComponent<BoxCollider2D>();
+        polygonCollider = GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void resetTutorial()
+    {
+        freezeGame(); // unfreezes
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
+    }
+
+    public void quitTheGame()
+    {
+        Application.Quit();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 3)
         {
@@ -46,16 +59,5 @@ public class FinishedScript : MonoBehaviour
     public void popUpMessage()
     {
         messageObject.SetActive(true);
-    }
-
-    public void resetTutorial()
-    {
-        freezeGame(); // unfreezes
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void quitTheGame()
-    {
-        Application.Quit();
     }
 }
