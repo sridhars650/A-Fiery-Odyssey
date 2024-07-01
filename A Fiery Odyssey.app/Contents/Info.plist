@@ -5,7 +5,7 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>English</string>
     <key>CFBundleExecutable</key>
-    <string>Magnetic Odyssey</string>
+    <string>A Fiery Odyssey</string>
     <key>CFBundleGetInfoString</key>
     <string>Unity Player version 2022.3.34f1 (4886f5360533). (c) 2005-2024 Unity Technologies. All rights reserved.</string>
     <key>CFBundleIconFile</key>
@@ -15,7 +15,7 @@
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
-    <string>Magnetic Odyssey</string>
+    <string>A Fiery Odyssey</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>

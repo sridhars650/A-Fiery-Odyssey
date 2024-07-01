@@ -1264,10 +1264,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Coins: '
+  m_text: 'Coins : '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d6b79f06a60a04a97886208615fd7e38, type: 2}
+  m_sharedMaterial: {fileID: 4115878963566825210, guid: d6b79f06a60a04a97886208615fd7e38, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4272,7 +4272,7 @@ Transform:
   m_GameObject: {fileID: 1497679711}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.38, y: -2.897, z: 0}
+  m_LocalPosition: {x: -8.27, y: -2.897, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5675,7 +5675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 85182952528209799, guid: f52420d7e1093493ba45f1fb1f0bab94, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.36
+      value: -1.29
       objectReference: {fileID: 0}
     - target: {fileID: 85182952528209799, guid: f52420d7e1093493ba45f1fb1f0bab94, type: 3}
       propertyPath: m_LocalPosition.z
