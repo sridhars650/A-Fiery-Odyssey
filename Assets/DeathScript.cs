@@ -9,27 +9,32 @@ public class DeathScript : MonoBehaviour
     public GameObject messageObject;
     public bool inMessageState = false;
     public bool gameIsFrozen = false;
+
     // Start is called before the first frame update
     void Start()
     {
         polygonCollider = GetComponent<PolygonCollider2D>();
+        Time.timeScale = 1; // Ensure time scale is reset at the start
+        Debug.Log("Start: Time.timeScale = " + Time.timeScale); // Debug log to check time scale
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // No operations needed in Update method currently
     }
 
-    public void resetTutorial()
+    public void ResetTutorial()
     {
-        freezeGame(); // unfreezes
+        Debug.Log("ResetTutorial: called");
+        FreezeGame(false); // unfreezes
+        Debug.Log("ResetTutorial: Time.timeScale before load = " + Time.timeScale); // Debug log before scene load
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        
     }
 
-    public void quitTheGame()
+    public void QuitTheGame()
     {
+        Debug.Log("QuitTheGame: called");
         Application.Quit();
     }
 
@@ -37,27 +42,29 @@ public class DeathScript : MonoBehaviour
     {
         if (collision.gameObject.layer == 3)
         {
-            inMessageState = true;
-            freezeGame(); // freezes game
-            popUpMessage();
+            Debug.Log("OnCollisionEnter2D: collision with layer 3 detected");
+            EnterMessageState();
         }
     }
 
-    public void freezeGame()
+    private void EnterMessageState()
     {
-        gameIsFrozen = !gameIsFrozen;
-        if (gameIsFrozen)
-        {
-            Time.timeScale = 0;
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
+        Debug.Log("EnterMessageState: called");
+        inMessageState = true;
+        FreezeGame(true); // freezes game
+        PopUpMessage();
     }
 
-    public void popUpMessage()
+    public void FreezeGame(bool freeze)
     {
+        gameIsFrozen = freeze;
+        Time.timeScale = freeze ? 0 : 1;
+        Debug.Log("FreezeGame: Time.timeScale = " + Time.timeScale); // Debug log to check time scale
+    }
+
+    public void PopUpMessage()
+    {
+        Debug.Log("PopUpMessage: called");
         messageObject.SetActive(true);
     }
 }

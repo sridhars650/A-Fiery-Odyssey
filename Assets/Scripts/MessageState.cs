@@ -15,33 +15,39 @@ public class MessageState : MonoBehaviour
     void Start()
     {
         polygonCollider = GetComponent<PolygonCollider2D>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isDisabled)
+        HandleCollisionDisableTimer();
+        HandleMessageStateInput();
+    }
+
+    private void HandleCollisionDisableTimer()
+    {
+        if (!isDisabled) return;
+
+        disableTimer -= Time.deltaTime;
+        if (disableTimer <= 0)
         {
-            disableTimer -= Time.deltaTime;
-            if (disableTimer <= 0)
-            {
-                polygonCollider.enabled = true;
-                isDisabled = false;
-            }
-        }
-        if (inMessageState)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                dismissPopUp();
-            }
+            polygonCollider.enabled = true;
+            isDisabled = false;
         }
     }
-    private void DisableCollisionForTwoSeconds()
+
+    private void HandleMessageStateInput()
+    {
+        if (inMessageState && Input.GetKeyDown(KeyCode.Escape))
+        {
+            dismissPopUp();
+        }
+    }
+
+    private void DisableCollisionForSeconds(float seconds)
     {
         polygonCollider.enabled = false;
-        disableTimer = 2;
+        disableTimer = seconds;
         isDisabled = true;
     }
 
@@ -49,23 +55,21 @@ public class MessageState : MonoBehaviour
     {
         if (collision.gameObject.layer == 3)
         {
-            inMessageState = true;
-            freezeGame(); // freezes game
-            popUpMessage();
+            enterMessageState();
         }
     }
 
-    public void freezeGame()
+    private void enterMessageState()
     {
-        gameIsFrozen = !gameIsFrozen;
-        if (gameIsFrozen)
-        {
-            Time.timeScale = 0;
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
+        inMessageState = true;
+        freezeGame(true);
+        popUpMessage();
+    }
+
+    public void freezeGame(bool freeze)
+    {
+        gameIsFrozen = freeze;
+        Time.timeScale = freeze ? 0 : 1;
     }
 
     public void popUpMessage()
@@ -77,8 +81,7 @@ public class MessageState : MonoBehaviour
     {
         messageObject.SetActive(false);
         inMessageState = false;
-        freezeGame(); // unfreezes game
-        DisableCollisionForTwoSeconds();  
-    } 
-
+        freezeGame(false);
+        DisableCollisionForSeconds(2);
+    }
 }
