@@ -1412,14 +1412,14 @@ RectTransform:
   m_GameObject: {fileID: 395736891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1445584786}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1577, y: 912}
+  m_AnchoredPosition: {x: 315, y: 195}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &395736893
@@ -1553,12 +1553,20 @@ PrefabInstance:
       value: 82.5
       objectReference: {fileID: 0}
     - target: {fileID: 823262887606617116, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 823262887606617116, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 823262887606617116, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 151
+      value: 18.98964
       objectReference: {fileID: 0}
     - target: {fileID: 823262887606617116, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 83
+      value: -6.4100494
       objectReference: {fileID: 0}
     - target: {fileID: 823262887606617116, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2249,8 +2257,8 @@ Transform:
   m_GameObject: {fileID: 708240520}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 151, y: 83, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 18.98964, y: -6.4100494, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1987392766}
@@ -2536,7 +2544,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 713461805}
         m_TargetAssemblyTypeName: FinishedScript, Assembly-CSharp
-        m_MethodName: quitTheGame
+        m_MethodName: QuitTheGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2579,8 +2587,8 @@ Transform:
   m_GameObject: {fileID: 764233405}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 151, y: 83, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 18.98964, y: -6.4100494, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2028579089}
@@ -2987,7 +2995,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 713461805}
         m_TargetAssemblyTypeName: FinishedScript, Assembly-CSharp
-        m_MethodName: quitTheGame
+        m_MethodName: QuitTheGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3760,7 +3768,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 713461805}
         m_TargetAssemblyTypeName: FinishedScript, Assembly-CSharp
-        m_MethodName: resetTutorial
+        m_MethodName: ResetTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4218,8 +4226,8 @@ Transform:
   m_GameObject: {fileID: 1325984309}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 151, y: 83, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 18.98964, y: -6.4100494, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 93931859}
@@ -4640,7 +4648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -5188,7 +5196,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 713461805}
         m_TargetAssemblyTypeName: FinishedScript, Assembly-CSharp
-        m_MethodName: resetTutorial
+        m_MethodName: ResetTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5227,12 +5235,20 @@ PrefabInstance:
       value: 82.5
       objectReference: {fileID: 0}
     - target: {fileID: 823262887606617116, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 823262887606617116, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 823262887606617116, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 151
+      value: 18.98964
       objectReference: {fileID: 0}
     - target: {fileID: 823262887606617116, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 83
+      value: -6.4100494
       objectReference: {fileID: 0}
     - target: {fileID: 823262887606617116, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6336,12 +6352,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 1445584786}
     m_Modifications:
     - target: {fileID: 823262887606617116, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 823262887606617116, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 823262887606617116, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 151
+      value: 18.98964
       objectReference: {fileID: 0}
     - target: {fileID: 823262887606617116, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 83
+      value: -6.4100494
       objectReference: {fileID: 0}
     - target: {fileID: 823262887606617116, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6382,6 +6406,10 @@ PrefabInstance:
     - target: {fileID: 9163625058557898677, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
       propertyPath: m_Name
       value: IntroductionMessage
+      objectReference: {fileID: 0}
+    - target: {fileID: 9163625058557898677, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

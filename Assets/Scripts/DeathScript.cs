@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,12 +14,6 @@ public class DeathScript : MonoBehaviour
         polygonCollider = GetComponent<PolygonCollider2D>();
         Time.timeScale = 1; // Ensure time scale is reset at the start
         Debug.Log("Start: Time.timeScale = " + Time.timeScale); // Debug log to check time scale
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // No operations needed in Update method currently
     }
 
     public void ResetTutorial()
