@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LogicScript : MonoBehaviour
 {
@@ -14,5 +15,15 @@ public class LogicScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void quitTheGame()
+    {
+        Application.Quit();
+    }
+
+    public void playTutorial()
+    {
+        SceneManager.LoadScene("TutorialScene");
     }
 }
