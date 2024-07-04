@@ -26,4 +26,9 @@ public class LogicScript : MonoBehaviour
     {
         SceneManager.LoadScene("TutorialScene");
     }
+
+    public void showHelpMenu()
+    {
+        SceneManager.LoadScene("HelpScene");
+    }
 }
