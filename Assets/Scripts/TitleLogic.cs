@@ -16,7 +16,10 @@ public class LogicScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            openSettingsMenu();
+        }
     }
 
     public void quitTheGame()
@@ -40,6 +43,10 @@ public class LogicScript : MonoBehaviour
         if (settingsOpen)
         { 
             settingsMenu.SetActive(true);
+        }
+        else 
+        {
+            settingsMenu.SetActive(false);
         }
     }
 
