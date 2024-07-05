@@ -3,9 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class TutorialLogic : MonoBehaviour
 {
+    public bool settingsOpen = false;
+    public GameObject settingsMenu;
     public bool gameIsFrozen = false;
     public bool inMessageState = false;
-    public GameObject messageObject;
     private BoxCollider2D boxCollider;
 
     // Start is called before the first frame update
@@ -13,7 +14,6 @@ public class TutorialLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // No operations needed in Update method currently
     }
 
     public void FreezeGame(bool freeze)
@@ -37,6 +37,21 @@ public class TutorialLogic : MonoBehaviour
     {
         FreezeGame(false); // unfreezes
         SceneManager.LoadScene("TitleScene");
+    }
+
+    public void openSettingsMenu()
+    {
+        settingsOpen = !settingsOpen;
+        if (settingsOpen)
+        { 
+            settingsMenu.SetActive(true);
+            FreezeGame(true); // freezes
+        }
+        else 
+        {
+            settingsMenu.SetActive(false);
+            FreezeGame(false); // unfreezes
+        }
     }
 
 }
