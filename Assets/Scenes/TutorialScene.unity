@@ -1542,11 +1542,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 610610820381469758, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
       propertyPath: m_text
-      value: you can either restart or quit the game
+      value: you can either restart or return to main menu
       objectReference: {fileID: 0}
     - target: {fileID: 610610820381469758, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
       propertyPath: m_fontSize
       value: 82.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 610610820381469758, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
+      propertyPath: m_margin.z
+      value: -495.47992
       objectReference: {fileID: 0}
     - target: {fileID: 610610820381469758, guid: a8a868711cc2745ce992d09271ec38f5, type: 3}
       propertyPath: m_fontSizeBase
@@ -1981,7 +1985,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quit Game
+  m_text: Return
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d6b79f06a60a04a97886208615fd7e38, type: 2}
   m_sharedMaterial: {fileID: 4115878963566825210, guid: d6b79f06a60a04a97886208615fd7e38, type: 2}
@@ -2301,6 +2305,7 @@ MonoBehaviour:
   gameIsFrozen: 0
   inMessageState: 0
   messageObject: {fileID: 1325984309}
+  finishedTutorial: 0
 --- !u!212 &713461806
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2427,7 +2432,7 @@ GameObject:
   - component: {fileID: 758503863}
   - component: {fileID: 758503862}
   m_Layer: 0
-  m_Name: QuitBtn
+  m_Name: returnBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2542,9 +2547,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 713461805}
-        m_TargetAssemblyTypeName: FinishedScript, Assembly-CSharp
-        m_MethodName: QuitTheGame
+      - m_Target: {fileID: 1552752312}
+        m_TargetAssemblyTypeName: TutorialLogic, Assembly-CSharp
+        m_MethodName: returnToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2878,7 +2883,7 @@ GameObject:
   - component: {fileID: 975050927}
   - component: {fileID: 975050926}
   m_Layer: 0
-  m_Name: QuitBtn
+  m_Name: returnBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2993,9 +2998,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 713461805}
-        m_TargetAssemblyTypeName: FinishedScript, Assembly-CSharp
-        m_MethodName: QuitTheGame
+      - m_Target: {fileID: 1552752312}
+        m_TargetAssemblyTypeName: TutorialLogic, Assembly-CSharp
+        m_MethodName: returnToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3766,8 +3771,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 713461805}
-        m_TargetAssemblyTypeName: FinishedScript, Assembly-CSharp
+      - m_Target: {fileID: 1552752312}
+        m_TargetAssemblyTypeName: TutorialLogic, Assembly-CSharp
         m_MethodName: ResetTutorial
         m_Mode: 1
         m_Arguments:
@@ -4362,8 +4367,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You did it! You finished the game, soon you will be able to return to the
-    main menu and work your way up levels. Have fun!
+  m_text: You did it! You finished the tutorial, soon you will be able to return
+    to the main menu and work your way up levels. Have fun!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d6b79f06a60a04a97886208615fd7e38, type: 2}
   m_sharedMaterial: {fileID: 4115878963566825210, guid: d6b79f06a60a04a97886208615fd7e38, type: 2}
@@ -5065,6 +5070,53 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65a3994221d9843d6ad14d62b3a3c444, type: 3}
+--- !u!1 &1552752311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1552752314}
+  - component: {fileID: 1552752312}
+  m_Layer: 0
+  m_Name: TutorialLogic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1552752312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552752311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5145304ceb4e546699baf64b0480ce20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameIsFrozen: 0
+  inMessageState: 0
+  messageObject: {fileID: 0}
+--- !u!4 &1552752314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552752311}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2012.1897, y: 994.2852, z: -12.56681}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1571396622
 GameObject:
   m_ObjectHideFlags: 0
@@ -5194,8 +5246,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 713461805}
-        m_TargetAssemblyTypeName: FinishedScript, Assembly-CSharp
+      - m_Target: {fileID: 1552752312}
+        m_TargetAssemblyTypeName: TutorialLogic, Assembly-CSharp
         m_MethodName: ResetTutorial
         m_Mode: 1
         m_Arguments:
@@ -6152,7 +6204,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quit Game
+  m_text: Return
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d6b79f06a60a04a97886208615fd7e38, type: 2}
   m_sharedMaterial: {fileID: 4115878963566825210, guid: d6b79f06a60a04a97886208615fd7e38, type: 2}
@@ -6500,3 +6552,4 @@ SceneRoots:
   - {fileID: 6496061270655932041}
   - {fileID: 253337434}
   - {fileID: 1105377342}
+  - {fileID: 1552752314}
